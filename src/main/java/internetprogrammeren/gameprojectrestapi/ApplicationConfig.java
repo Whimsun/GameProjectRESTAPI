@@ -5,10 +5,22 @@
  */
 package internetprogrammeren.gameprojectrestapi;
 
+import domain.ServiceFacade;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 /**
  *
  * @author Tim
  */
-public class ApplicationConfig {
-    
+@Configuration
+@ComponentScan("internetprogrammeren.gameprojectrestapi.controller")
+@EnableWebMvc  
+public class ApplicationConfig { 
+    @Bean
+     public ServiceFacade service() {
+         return new ServiceFacade("database");
+     }
 }

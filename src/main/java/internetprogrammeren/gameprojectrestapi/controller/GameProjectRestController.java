@@ -5,10 +5,33 @@
  */
 package internetprogrammeren.gameprojectrestapi.controller;
 
+import domain.Game;
+import domain.ServiceFacade;
+import java.util.Collection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
  * @author Tim
  */
-public class GameProjectRestController {
+@RestController
+@RequestMapping("/gameapi")
+public class GameProjectRestController{
+    @Autowired
+    public ServiceFacade service;
     
+    @RequestMapping(method=RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void addGameRest(@RequestBody Game game){
+        service.addGame(game);
+    }
+    
+    @RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    public Collection<Game> getGamesRest(){
+        return service.getAllGames();
+    }
 }
