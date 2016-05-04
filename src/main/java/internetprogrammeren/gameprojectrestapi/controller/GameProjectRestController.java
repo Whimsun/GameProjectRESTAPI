@@ -34,4 +34,14 @@ public class GameProjectRestController{
     public Collection<Game> getGamesRest(){
         return service.getAllGames();
     }
+    
+    @RequestMapping(value="/delete", method=RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteGame(@RequestBody Game game){
+        service.removeGame(game);
+    }
+    
+    @RequestMapping(value="/update", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
+    public void updateGame(@RequestBody Game game){
+        service.updateGame(game);
+    }
 }
