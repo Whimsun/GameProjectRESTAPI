@@ -28,8 +28,8 @@ public class GameProjectRestController{
     @Autowired
     public ServiceFacade service;
     
-    @CrossOrigin
-    @RequestMapping(method=RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
+   @CrossOrigin
+   @RequestMapping(method=RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addGameRest(@RequestBody Game game){
         service.addGame(game);
     }
@@ -41,7 +41,7 @@ public class GameProjectRestController{
     }
     
     @CrossOrigin
-    @RequestMapping(value="/delete/{id}")
+    @RequestMapping(value="/delete/{id}",method=RequestMethod.POST)
     public void deleteGame(@PathVariable int id){
         service.removeGame(service.getGame(id));
     }

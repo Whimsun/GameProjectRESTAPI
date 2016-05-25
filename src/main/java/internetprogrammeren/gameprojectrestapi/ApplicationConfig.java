@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan("internetprogrammeren.gameprojectrestapi.controller")
 @EnableWebMvc  
 public class ApplicationConfig { 
-    @Bean
+    @Bean(destroyMethod = "destroy")
      public ServiceFacade service() {
          return new ServiceFacade("database");
      }
